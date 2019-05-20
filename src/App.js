@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Clock from './Clock';
 
 function App() {
+
+  const [deadline, setDeadline] = useState('2019-05-21');
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <div className='App-title'>Countdown to { deadline }</div>
+        <Clock deadline={deadline}/>
+        <form>
+          <label>Select new deadline</label>
+          <input
+            type="date"
+            className='Deadline-input'
+            placeholder="new date"
+            onChange={event => setDeadline(event.target.value)}
+            />
+        </form>
     </div>
   );
 }
